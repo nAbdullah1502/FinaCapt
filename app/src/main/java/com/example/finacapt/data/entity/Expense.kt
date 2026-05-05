@@ -20,10 +20,11 @@ import androidx.room.PrimaryKey
     indices = [Index("category_id")]
 )
 data class Expense(
-    val name: String,
+    val name: String?,
     @ColumnInfo(name="category_id")
     val categoryId: Int,
     val timestamp: Long,
+    val amount: Double,
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0
 )
