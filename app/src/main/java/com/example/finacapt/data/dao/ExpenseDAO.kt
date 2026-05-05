@@ -16,10 +16,10 @@ interface ExpenseDAO {
     @Query("SELECT * FROM expense ORDER BY timestamp DESC")
     fun getAllExpenses(): Flow<List<Expense>>
 
-    @Query("SELECT * FROM expense WHERE categoryId = :categoryId ORDER BY timestamp DESC")
+    @Query("SELECT * FROM expense WHERE category_id = :categoryId ORDER BY timestamp DESC")
     fun getExpensesByCategory(categoryId: Int): Flow<List<Expense>>
 
-    @Query("SELECT SUM(amount) FROM expense WHERE categoryId = :categoryId")
+    @Query("SELECT SUM(amount) FROM expense WHERE category_id = :categoryId")
     fun getTotalByCategory(categoryId: Int): Flow<Double?>
 
     @Query("SELECT SUM(amount) FROM expense")
