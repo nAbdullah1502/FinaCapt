@@ -2,8 +2,10 @@ package com.example.finacapt.data.dao
 
 import androidx.room.Dao
 import androidx.room.Query
+import androidx.room.Transaction
 import androidx.room.Upsert
 import com.example.finacapt.data.entity.Category
+import com.example.finacapt.data.CategoryWithExpense
 import kotlinx.coroutines.flow.Flow
 
 
@@ -20,4 +22,8 @@ interface CategoryDAO {
 
     @Query("DELETE FROM category WHERE title = :title")
     suspend fun deleteByTitle(title:String)
+
+    @Transaction
+    @Query("SELECT * FROM category")
+    fun getCategoriesWithExpenses(): Flow<List<CategoryWithExpense>>
 }
