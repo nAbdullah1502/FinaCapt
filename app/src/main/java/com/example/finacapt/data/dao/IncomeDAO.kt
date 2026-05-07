@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface IncomeDAO {
     @Upsert
-    suspend fun insertIncome(income: Income)
+    suspend fun upsertIncome(income: Income)
 
     @Delete
     suspend fun deleteIncome(income: Income)
