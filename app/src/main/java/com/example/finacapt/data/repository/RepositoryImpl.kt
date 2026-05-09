@@ -8,8 +8,9 @@ import com.example.finacapt.data.entity.Expense
 import com.example.finacapt.data.entity.Income
 import com.example.finacapt.domain.repository.Repository
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
-class RepositoryImpl(
+class RepositoryImpl @Inject constructor(
     private val categoryDao: CategoryDAO,
     private val incomeDao: IncomeDAO,
     private val expenseDao: ExpenseDAO
