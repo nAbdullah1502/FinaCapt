@@ -27,8 +27,8 @@ class RepositoryImpl @Inject constructor(
         return categoryDao.getCategoryById(id=id)
     }
 
-    override suspend fun deleteCategoryByTitle(title: String) {
-        categoryDao.deleteCategoryByTitle(title=title)
+    override suspend fun deleteCategoryById(id: Int) {
+        categoryDao.deleteCategoryById(id=id)
     }
 
     override suspend fun upsertExpense(expense: Expense) {

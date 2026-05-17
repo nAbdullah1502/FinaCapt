@@ -9,7 +9,7 @@ interface Repository{
     suspend fun upsertCategory(category: Category)
     fun getAllCategories(): Flow<List<Category>>
     suspend fun getCategoryById(id: Int): Category?
-    suspend fun deleteCategoryByTitle(title:String)
+    suspend fun deleteCategoryById(id:Int)
 
     suspend fun upsertExpense(expense: Expense)
     suspend fun deleteExpense(expense: Expense)
