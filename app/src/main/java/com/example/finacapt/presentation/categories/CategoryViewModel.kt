@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.finacapt.data.entity.Category
 import com.example.finacapt.domain.usecase.CategoryUseCases
-import com.example.finacapt.domain.usecase.UpsertCategory
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -14,7 +13,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CategoryViewModel @Inject constructor(
-    val useCase: UpsertCategory
+    val useCase: CategoryUseCases
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(CategoryState())
@@ -24,7 +23,9 @@ class CategoryViewModel @Inject constructor(
         when(event){
             is CategoryEvent.SetCategoryTitle -> _state.update {it.copy(stateTitle=event.setTitle)}
             is CategoryEvent.SetCategoryLimit -> _state.update {it.copy(stateLimit=event.setLimit)}
-            is CategoryEvent.DeleteCategory -> TODO()
+            is CategoryEvent.DeleteCategory -> { viewModelScope.launch {
+                if(event.category.id != null) useCase.deleteCategoryById(event.category.id) }
+            }
 
             is CategoryEvent.UpsertCategory -> {
                 val title = state.value.stateTitle
