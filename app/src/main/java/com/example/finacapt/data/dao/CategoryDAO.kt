@@ -14,8 +14,8 @@ interface CategoryDAO {
     @Upsert
     suspend fun upsertCategory(category: Category)
 
-    @Query("DELETE FROM category WHERE title = :title")
-    suspend fun deleteCategoryByTitle(title: String)
+    @Query("DELETE FROM category WHERE id = :id")
+    suspend fun deleteCategoryById(id: Int)
 
 
     @Query("SELECT * FROM category")
