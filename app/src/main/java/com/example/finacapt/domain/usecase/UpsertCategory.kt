@@ -9,6 +9,7 @@ import javax.inject.Inject
 class UpsertCategory @Inject constructor(
     private val repository: Repository
 ){
+    @Throws (InvalidCategoryException::class)
     suspend operator fun invoke(category: Category) {
         if (category.title.isBlank()) {
             throw InvalidCategoryException("The title of the category can't be empty.")
