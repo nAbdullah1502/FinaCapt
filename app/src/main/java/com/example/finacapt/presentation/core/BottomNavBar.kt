@@ -16,6 +16,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.example.finacapt.presentation.categories.CategoryViewModel
 import com.example.finacapt.presentation.core.screen.BudgetOverviewScreen
 import com.example.finacapt.presentation.core.screen.CategoryAnalysisScreen
 import com.example.finacapt.presentation.core.screen.CategoryScreen
@@ -72,7 +73,7 @@ fun BottomBar(navController: NavHostController){
 @Composable
 fun AppNavGraph(
     navController: NavHostController,
-    viewModel: ViewModel
+    viewModel: CategoryViewModel
 ){
     NavHost(navController = navController, startDestination = Screen.BudgetOverviewScreen.route) {
         composable(Screen.BudgetOverviewScreen.route){BudgetOverviewScreen(viewModel)}
