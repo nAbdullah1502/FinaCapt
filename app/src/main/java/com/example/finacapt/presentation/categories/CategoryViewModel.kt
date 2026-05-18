@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.finacapt.data.entity.Category
 import com.example.finacapt.domain.usecase.CategoryUseCases
+import com.example.finacapt.domain.util.wrapper.AddCategoryUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -19,6 +20,12 @@ class CategoryViewModel @Inject constructor(
     private val _state = MutableStateFlow(CategoryState())
     val state = _state.asStateFlow()
 
+    private val _categoryTitle = MutableStateFlow(AddCategoryUiState())
+    val categoryTitle = _categoryTitle.asStateFlow()
+
+
+    fun getAllCategories() = useCase.getAllCategories()
+
     fun onEvent(event: CategoryEvent){
         when(event){
             is CategoryEvent.SetCategoryTitle -> _state.update {it.copy(stateTitle=event.setTitle)}
@@ -31,7 +38,7 @@ class CategoryViewModel @Inject constructor(
                 val title = state.value.stateTitle
                 val limit = state.value.stateLimit
                 if (title.isBlank()) { return }
-                val category = Category(title = title, limit = limit)
+                val category = Category(title = title, limit = limit, icon="")
                 viewModelScope.launch {
                     val useCase = null
                     useCase?.invoke(category)
