@@ -23,6 +23,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".presentation.core.AddEditCategoryActivity"
+            android:exported="true"
+            android:label="Finacapt"
+            android:theme = "@style/Theme.FinaCapt">
+
+        </activity>
     </application>
 
 </manifest>
