@@ -24,6 +24,7 @@ import com.example.finacapt.presentation.categories.CategoryViewModel
 @Composable
 fun AddEditCategoryScreen(viewModel: CategoryViewModel){
     val state = viewModel.state.collectAsState()
+    val title = viewModel.categoryTitle.collectAsState()
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(
@@ -38,7 +39,7 @@ fun AddEditCategoryScreen(viewModel: CategoryViewModel){
                 .fillMaxSize()
             ){
                 TextField(
-                    value = state.value.stateTitle,
+                    value = title.value.title,
                     onValueChange = {viewModel.onEvent(CategoryEvent.SetCategoryTitle(it))},
                     label = { Text("Category title") },
                     placeholder = { Text("some category ...") },
@@ -46,7 +47,7 @@ fun AddEditCategoryScreen(viewModel: CategoryViewModel){
                     modifier = Modifier.fillMaxWidth()
                 )
                 Spacer(modifier = Modifier.width(8.dp))
-
+                TextField(value =  , onValueChange={})
             }
         }
     )

@@ -22,8 +22,6 @@ class CategoryViewModel @Inject constructor(
 
     private val _categoryTitle = MutableStateFlow(AddCategoryUiState())
     val categoryTitle = _categoryTitle.asStateFlow()
-
-
     fun getAllCategories() = useCase.getAllCategories()
 
     fun onEvent(event: CategoryEvent){
@@ -33,7 +31,6 @@ class CategoryViewModel @Inject constructor(
             is CategoryEvent.DeleteCategory -> { viewModelScope.launch {
                 if(event.category.id != null) useCase.deleteCategoryById(event.category.id) }
             }
-
             is CategoryEvent.UpsertCategory -> {
                 val title = state.value.stateTitle
                 val limit = state.value.stateLimit
@@ -44,7 +41,6 @@ class CategoryViewModel @Inject constructor(
                     useCase?.invoke(category)
                 }
             }
-
         }
     }
 }
