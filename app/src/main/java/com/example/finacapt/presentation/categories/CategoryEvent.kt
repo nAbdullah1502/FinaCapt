@@ -6,5 +6,5 @@ sealed class CategoryEvent {
     data class DeleteCategory(val category: Category) : CategoryEvent()
     data object UpsertCategory : CategoryEvent()
     data class SetCategoryTitle (val setTitle: String): CategoryEvent()
-    data class SetCategoryLimit (val setLimit: Double): CategoryEvent()
+    data class SetCategoryLimit (val setLimit: String): CategoryEvent()
 }
