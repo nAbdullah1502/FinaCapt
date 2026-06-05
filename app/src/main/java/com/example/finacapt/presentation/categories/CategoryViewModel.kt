@@ -31,8 +31,10 @@ class CategoryViewModel @Inject constructor(
             is CategoryEvent.SetCategoryTitle -> _state.update {it.copy(stateTitle=event.setTitle)}
             is CategoryEvent.SetCategoryLimit -> _state.update {it.copy(stateLimit=event.setLimit)}
             is CategoryEvent.SetCategoryColor -> _state.update {it.copy(stateColor=event.setColor)}
-            is CategoryEvent.DeleteCategory -> { viewModelScope.launch {
-                if(event.category.id != null) useCase.deleteCategoryById(event.category.id) }
+            is CategoryEvent.DeleteCategory -> {
+                viewModelScope.launch {
+                        if(event.category.id != null) useCase.deleteCategoryById(event.category.id)
+                }
             }
             is CategoryEvent.UpsertCategory -> {
                 val title = state.value.stateTitle
