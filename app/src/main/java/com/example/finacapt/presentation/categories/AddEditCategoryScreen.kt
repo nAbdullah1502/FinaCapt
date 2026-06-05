@@ -1,12 +1,11 @@
-package com.example.finacapt.presentation.core
+package com.example.finacapt.presentation.categories
 
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Save
 import androidx.compose.material3.FloatingActionButton
@@ -18,13 +17,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.finacapt.presentation.categories.CategoryEvent
-import com.example.finacapt.presentation.categories.CategoryViewModel
+import androidx.navigation.NavController
 
 @Composable
-fun AddEditCategoryScreen(viewModel: CategoryViewModel){
+fun AddEditCategoryScreen(
+    viewModel: CategoryViewModel,
+    navController: NavController
+){
     val state = viewModel.state.collectAsState()
-    val title = viewModel.categoryTitle.collectAsState()
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(
@@ -34,12 +34,14 @@ fun AddEditCategoryScreen(viewModel: CategoryViewModel){
             }
         },
         content = { paddingValues->
-            Box(modifier = Modifier
-                .padding(paddingValues)
-                .fillMaxSize()
+            Column(
+                modifier = Modifier
+                    .padding(paddingValues)
+                    .fillMaxSize()
+                    .padding(16.dp)
             ){
                 TextField(
-                    value = title.value.title,
+                    value = state.value.stateTitle,
                     onValueChange = {viewModel.onEvent(CategoryEvent.SetCategoryTitle(it))},
                     label = { Text("Category title") },
                     placeholder = { Text("some category ...") },
@@ -47,10 +49,8 @@ fun AddEditCategoryScreen(viewModel: CategoryViewModel){
                     modifier = Modifier.fillMaxWidth()
                 )
                 Spacer(modifier = Modifier.width(8.dp))
-                TextField(value =  , onValueChange={})
+                TextField(value = state.value.stateLimit, onValueChange={})
             }
         }
     )
-
-
 }
