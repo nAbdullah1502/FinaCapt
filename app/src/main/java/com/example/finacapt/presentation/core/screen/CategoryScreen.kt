@@ -12,7 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.example.finacapt.presentation.categories.CategoryViewModel
-import com.example.finacapt.presentation.core.AddEditCategoryActivity
+import com.example.finacapt.presentation.categories.AddEditCategoryActivity
 
 @Composable
 fun CategoryScreen(viewModel: CategoryViewModel){
@@ -31,6 +31,8 @@ fun CategoryScreen(viewModel: CategoryViewModel){
             verticalArrangement = Arrangement.spacedBy(16.dp),
             horizontalArrangement = Arrangement.spacedBy(16.dp),
             contentPadding = paddingValues
-        ) { }
+        ) {
+
+        }
     }
 }
