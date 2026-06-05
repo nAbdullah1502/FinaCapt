@@ -6,5 +6,5 @@ data class CategoryState(
     val categoriesList : List<Category> = emptyList(),
     val stateTitle : String = "",
     val stateLimit : String = "",
-    val stateColor : String = ""
+    val stateColor : Int = 0
 )
