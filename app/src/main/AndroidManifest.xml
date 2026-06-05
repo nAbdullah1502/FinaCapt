@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".presentation.core.AddEditCategoryActivity"
+            android:name=".presentation.categories.AddEditCategoryActivity"
             android:exported="true"
             android:label="Finacapt"
             android:theme = "@style/Theme.FinaCapt">
