@@ -11,6 +11,8 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import com.example.finacapt.presentation.categories.CategoryViewModel
+import com.example.finacapt.presentation.core.util.AppNavGraph
+import com.example.finacapt.presentation.core.util.BottomBar
 import com.example.finacapt.ui.theme.FinaCaptTheme
 import kotlin.getValue
 
@@ -24,7 +26,7 @@ class MainActivity : ComponentActivity() {
             FinaCaptTheme {
                 Scaffold(
                     bottomBar = {
-                        BottomBar(navController=navController)
+                        BottomBar(navController = navController)
                     }
                 ) { padding ->
                     Box(modifier = Modifier.padding(padding)) {
