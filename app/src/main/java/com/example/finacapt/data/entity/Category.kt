@@ -9,6 +9,7 @@ data class Category(
     val title: String,
     val limit: Double,
     val icon: String,
+    val colorId: Int,
     @PrimaryKey(autoGenerate = true)
     val id: Int? = null
 )
