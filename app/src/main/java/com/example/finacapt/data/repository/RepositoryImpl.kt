@@ -35,8 +35,8 @@ class RepositoryImpl @Inject constructor(
         expenseDao.upsertExpense(expense = expense)
     }
 
-    override suspend fun deleteExpense(expense: Expense) {
-        expenseDao.deleteExpense(expense=expense)
+    override suspend fun deleteExpense(expense: Int) {
+        expenseDao.deleteExpense(expense =expense)
     }
 
     override fun getAllExpenses(): Flow<List<Expense>> {

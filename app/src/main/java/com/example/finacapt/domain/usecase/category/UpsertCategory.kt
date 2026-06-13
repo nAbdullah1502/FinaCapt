@@ -1,4 +1,4 @@
-package com.example.finacapt.domain.usecase
+package com.example.finacapt.domain.usecase.category
 
 import com.example.finacapt.data.entity.Category
 import com.example.finacapt.domain.repository.Repository

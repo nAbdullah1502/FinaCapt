@@ -1,4 +1,4 @@
-package com.example.finacapt.domain.usecase
+package com.example.finacapt.domain.usecase.category
 
 import javax.inject.Inject
 

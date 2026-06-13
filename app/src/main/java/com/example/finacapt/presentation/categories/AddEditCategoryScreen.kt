@@ -46,7 +46,9 @@ fun AddEditCategoryScreen(
                     ColorItem(
                         color = color,
                         selected = state.value.stateColor == index,
-                        onClick = { viewModel.onEvent(CategoryEvent.SetCategoryColor(index)) }
+                        onClick = {
+                            viewModel.onEvent(CategoryEvent.SetCategoryColor(setColor=index))
+                        }
                     )
                 }
             }
@@ -70,7 +72,6 @@ fun AddEditCategoryScreen(
                     onValueChange={viewModel.onEvent(CategoryEvent.SetCategoryLimit(it))}
                 )
             }
-
         }
     )
 }

@@ -3,8 +3,7 @@ package com.example.finacapt.presentation.categories
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.finacapt.data.entity.Category
-import com.example.finacapt.domain.usecase.CategoryUseCases
-import com.example.finacapt.domain.util.wrapper.AddCategoryUiState
+import com.example.finacapt.domain.usecase.category.CategoryUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow

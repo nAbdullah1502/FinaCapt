@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.graphics.Color
 
 @Composable
-fun CategoryItemCard(
+fun CategoryCardItem(
     title: String,
     spent: Double,
     limit: Double,
