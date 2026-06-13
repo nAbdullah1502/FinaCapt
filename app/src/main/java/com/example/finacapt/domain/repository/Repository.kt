@@ -12,7 +12,7 @@ interface Repository{
     suspend fun deleteCategoryById(id:Int)
 
     suspend fun upsertExpense(expense: Expense)
-    suspend fun deleteExpense(expense: Expense)
+    suspend fun deleteExpense(expense: Int)
     fun getAllExpenses(): Flow<List<Expense>>
     fun getExpensesByCategory(categoryId: Int): Flow<List<Expense>>
     fun getTotalByCategory(categoryId: Int): Flow<Double?>

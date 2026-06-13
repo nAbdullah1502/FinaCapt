@@ -11,7 +11,7 @@ interface ExpenseDAO {
     suspend fun upsertExpense(expense: Expense)
 
     @Delete
-    suspend fun deleteExpense(expense: Expense)
+    suspend fun deleteExpense(expense: Int)
 
     @Query("SELECT * FROM expense ORDER BY timestamp DESC")
     fun getAllExpenses(): Flow<List<Expense>>
