@@ -5,9 +5,14 @@ import androidx.room.Room
 import com.example.finacapt.data.Database
 import com.example.finacapt.data.repository.RepositoryImpl
 import com.example.finacapt.domain.repository.Repository
-import com.example.finacapt.domain.usecase.CategoryUseCases
-import com.example.finacapt.domain.usecase.GetAllCategories
-import com.example.finacapt.domain.usecase.UpsertCategory
+import com.example.finacapt.domain.usecase.category.CategoryUseCases
+import com.example.finacapt.domain.usecase.category.DeleteCategoryById
+import com.example.finacapt.domain.usecase.category.GetAllCategories
+import com.example.finacapt.domain.usecase.category.UpsertCategory
+import com.example.finacapt.domain.usecase.expense.AddExpense
+import com.example.finacapt.domain.usecase.expense.EraseExpenseById
+import com.example.finacapt.domain.usecase.expense.ExpenseUseCase
+import com.example.finacapt.domain.usecase.expense.GetAllExpenses
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -40,7 +45,18 @@ object DatabaseModule {
     fun provideCategoryUseCases(repository: Repository): CategoryUseCases{
         return CategoryUseCases(
             upsertCategory = UpsertCategory(repository),
-            getAllCategories = GetAllCategories(repository)
+            getAllCategories = GetAllCategories(repository),
+            deleteCategoryById = DeleteCategoryById(repository)
+        )
+    }
+
+    @Provides
+    @Singleton
+    fun provideExpenseUseCases(repository: Repository): ExpenseUseCase{
+        return ExpenseUseCase(
+            addExpense = AddExpense(repository),
+            getAllExpenses = GetAllExpenses(repository),
+            eraseExpense = EraseExpenseById(repository),
         )
     }
 }
