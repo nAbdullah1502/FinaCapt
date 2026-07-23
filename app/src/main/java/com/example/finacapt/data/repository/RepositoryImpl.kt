@@ -36,7 +36,7 @@ class RepositoryImpl @Inject constructor(
     }
 
     override suspend fun deleteExpense(expense: Int) {
-        expenseDao.deleteExpense(expense =expense)
+        expenseDao.deleteExpenseById(id = expense)
     }
 
     override fun getAllExpenses(): Flow<List<Expense>> {
@@ -44,15 +44,15 @@ class RepositoryImpl @Inject constructor(
     }
 
     override fun getExpensesByCategory(categoryId: Int): Flow<List<Expense>> {
-        return getExpensesByCategory(categoryId=categoryId)
+        return expenseDao.getExpensesByCategory(categoryId = categoryId)
     }
 
     override fun getTotalByCategory(categoryId: Int): Flow<Double?> {
-        return expenseDao.getTotalByCategory(categoryId=categoryId)
+        return expenseDao.getTotalByCategory(categoryId = categoryId)
     }
 
     override fun getTotalExpenses(): Flow<Double?> {
-        return getTotalExpenses()
+        return expenseDao.getTotalExpenses()
     }
 
     override suspend fun insertIncome(income: Income) {
