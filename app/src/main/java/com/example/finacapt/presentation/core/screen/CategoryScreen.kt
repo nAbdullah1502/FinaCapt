@@ -45,7 +45,7 @@ fun CategoryScreen(viewModel: CategoryViewModel){
                     spent = 0.0,
                     limit = category.limit,
                     modifier = Modifier.fillMaxSize(),
-                    onClick = {},
+                    onClick = {TODO("navigate to category activity")},
                 )
             }
         }

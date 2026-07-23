@@ -1,8 +1,9 @@
 package com.example.finacapt.presentation.core.util
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ChecklistRtl
-import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.AccountBalance
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Dashboard
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.StackedLineChart
 import androidx.compose.material3.Icon
@@ -11,20 +12,24 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.lifecycle.ViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.finacapt.presentation.categories.CategoryViewModel
+import com.example.finacapt.presentation.core.screen.AddExpenseSheet
 import com.example.finacapt.presentation.core.screen.BudgetOverviewScreen
 import com.example.finacapt.presentation.core.screen.CategoryAnalysisScreen
 import com.example.finacapt.presentation.core.screen.CategoryScreen
 import com.example.finacapt.presentation.core.screen.SettingsScreen
+import com.example.finacapt.presentation.expenses.ExpenseViewModel
 
 
 sealed class Screen(val route: String, val label: String){
     object BudgetOverviewScreen : Screen("BudgetOverview", "BudgetOverview")
     object Category: Screen("Category", "Category list and add")
+    object AddExpense: Screen(route="AddExpense",label="add an expense")
     object Settings: Screen("Settings", "Settings")
     object Stats: Screen("Stats", "Statistics")
 }
@@ -55,8 +60,9 @@ fun BottomBar(navController: NavHostController){
                 icon = {
                     Icon(
                         imageVector = when(screen){
-                            Screen.Category -> Icons.Default.Home
-                            Screen.BudgetOverviewScreen -> Icons.Default.ChecklistRtl
+                            Screen.BudgetOverviewScreen -> Icons.Default.AccountBalance
+                            Screen.Category -> Icons.Default.Dashboard
+                            Screen.AddExpense -> Icons.Default.Add
                             Screen.Stats -> Icons.Default.StackedLineChart
                             Screen.Settings -> Icons.Default.Settings
                         },
@@ -72,11 +78,12 @@ fun BottomBar(navController: NavHostController){
 @Composable
 fun AppNavGraph(
     navController: NavHostController,
-    viewModel: CategoryViewModel
+    viewModel: ViewModel
 ){
     NavHost(navController = navController, startDestination = Screen.BudgetOverviewScreen.route) {
         composable(Screen.BudgetOverviewScreen.route){BudgetOverviewScreen(viewModel)}
-        composable(Screen.Category.route){CategoryScreen(viewModel)}
+        composable(Screen.Category.route){CategoryScreen(viewModel as CategoryViewModel)}
+        composable(Screen.AddExpense.route){ AddExpenseSheet(viewModel as ExpenseViewModel) }
         composable(Screen.Stats.route) { CategoryAnalysisScreen(viewModel) }
         composable(Screen.Settings.route) {SettingsScreen(viewModel) }
     }
